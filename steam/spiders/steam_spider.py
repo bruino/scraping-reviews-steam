@@ -31,5 +31,4 @@ class SteamSpider(scrapy.Spider):
         # recommended = 0 -> "icon_thumbsDown.png"
         src_img = html_img_review.attrib["src"].split("/")[-1].lower()
         recommended = 1 if "up" in src_img else 0
-
-        return dict(game=game, user=user, recommended=recommended)
+        if recommended: return dict(game=game, user=user, recommended=recommended)
